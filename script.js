@@ -9,14 +9,17 @@ class Bank {
     this.balance = 0;
   }
 
-  deposite(money) {
-    this.balance += Number(money);
+  deposite(amount) {
+    this.balance += Number(amount);
     console.log(`Balance: ${this.balance}`);
     bal.innerHTML = `<div>₹${this.balance}</div>`;
   }
-  withdraw(money) {
-    this.balance -= Number(money);
-
+  withdraw(amount) {
+    if (this.balance - amount <= 0) {
+      console.log("you cannot withdraw more than you have!!");
+      return;
+    }
+    this.balance -= Number(amount);
     console.log(`Balance: ${this.balance}`);
     bal.innerHTML = `<div>₹${this.balance}</div>`;
   }
