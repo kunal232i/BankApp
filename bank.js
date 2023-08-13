@@ -8,15 +8,33 @@ var Bank = /** @class */ (function () {
         this.balance = 0;
     }
     Bank.prototype.deposite = function (amount) {
-        this.balance += Number(amount);
+        if (amount === "") {
+            alert("Please enter a valid deposit amount.");
+            return;
+        }
+        var depositAmount = Number(amount);
+        if (isNaN(depositAmount) || depositAmount <= 0) {
+            alert("Please enter a valid positive deposit amount.");
+            return;
+        }
+        this.balance += depositAmount;
         bal.innerHTML = "<div>\u20B9".concat(this.balance, "</div>");
     };
     Bank.prototype.withdraw = function (amount) {
-        if (this.balance - Number(amount) <= 0) {
-            console.log("you cannot withdraw more than you have!!");
+        if (amount === "") {
+            alert("Please enter a valid withdrawal amount.");
             return;
         }
-        this.balance -= Number(amount);
+        var withdrawalAmount = Number(amount);
+        if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+            alert("Please enter a valid positive withdrawal amount.");
+            return;
+        }
+        if (this.balance - withdrawalAmount < 0) {
+            alert("You cannot withdraw more than you have.");
+            return;
+        }
+        this.balance -= withdrawalAmount;
         bal.innerHTML = "<div>\u20B9".concat(this.balance, "</div>");
     };
     return Bank;

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bank App</title>
-  </head>
-  <body>
-    <h1>Welcome to Bank APP</h1>
-    <input id="depoInput" type="text" />
-    <button id="deposite">deposite</button>
-    <input id="drawInput" type="text" />
-    <button id="withdraw">Withdraw</button>
+<head>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="card">
+    <h1>Welcome to Bank App</h1>
+    <input class="input-field" id="depoInput" type="text" />
+    <button class="button" id="deposite">Deposit</button>
+    <input class="input-field" id="drawInput" type="text" />
+    <button class="button" id="withdraw">Withdraw</button>
     <div class="title">Balance</div>
     <div class="total" id="balance">₹0.00</div>
+  </div>
+  <script src="bank.js"></script>
+</body>
 
-    <script src="bank.js"></script>
-  </body>
 </html>

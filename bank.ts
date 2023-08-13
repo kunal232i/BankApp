@@ -4,7 +4,6 @@ const draw = document.getElementById("withdraw") as HTMLButtonElement;
 const drawInput = document.getElementById("drawInput") as HTMLInputElement;
 const bal = document.getElementById("balance") as HTMLElement;
 
-
 class Bank {
     balance: number;
     constructor(){
@@ -12,16 +11,39 @@ class Bank {
     }
     
     deposite(amount: string){
-        this.balance += Number(amount);
+        if (amount === "") {
+            alert("Please enter a valid deposit amount.");
+            return;
+        }
+        
+        const depositAmount = Number(amount);
+        if (isNaN(depositAmount) || depositAmount <= 0) {
+            alert("Please enter a valid positive deposit amount.");
+            return;
+        }
+        
+        this.balance += depositAmount;
         bal.innerHTML = `<div>₹${this.balance}</div>`;
     }
 
     withdraw(amount: string){
-        if(this.balance - Number(amount) <= 0){
-            console.log("you cannot withdraw more than you have!!");
+        if (amount === "") {
+            alert("Please enter a valid withdrawal amount.");
             return;
         }
-        this.balance -= Number(amount);
+        
+        const withdrawalAmount = Number(amount);
+        if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+            alert("Please enter a valid positive withdrawal amount.");
+            return;
+        }
+        
+        if (this.balance - withdrawalAmount < 0) {
+            alert("You cannot withdraw more than you have.");
+            return;
+        }
+        
+        this.balance -= withdrawalAmount;
         bal.innerHTML = `<div>₹${this.balance}</div>`;
     }
 }
